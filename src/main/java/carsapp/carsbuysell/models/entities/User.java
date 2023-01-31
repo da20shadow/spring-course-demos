@@ -2,9 +2,11 @@ package carsapp.carsbuysell.models.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -23,6 +25,8 @@ public class User extends BaseEntity {
     private boolean isActive;
     @Column(name = "avatar_img_url")
     private String avatarImgUrl;
+    @OneToMany
+    private List<UserRole> roles;
     @Column
     private LocalDateTime created;
     @Column
