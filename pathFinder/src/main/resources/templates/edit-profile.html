@@ -10,36 +10,27 @@
     <th:block th:include="~{fragments/navigation}"></th:block>
 </header>
 
+
 <main class="container">
 
-    <div class="flex justify-content-center">
+    <h1>Edit Profile</h1>
 
-        <div class="row gap-3 align-items-center">
+    <section class="d-flex">
 
-            <form class="was-validated border shadow-md rounded p-5 w-50 my-5 mx-auto"
-                  th:action="@{/register}" th:method="POST">
+        <!-- Edit Email -->
+        <section style="min-width: 340px; " class="g-col-4 m-3">
 
-                <div class="mb-3">
-                    <label class="form-label" for="username">Username:</label>
-                    <input class="form-control w-100 px-2 py-1"
-                           id="username"
-                           name="username"
-                           type="text"
-                           placeholder="Username"
-                           minlength="5"
-                           maxlength="45"
-                           required />
-                    <div class="invalid-feedback">Username bust be between 5 and 45 characters long!</div>
-                    <div class="valid-feedback">Looks OK!</div>
-                </div>
+            <form class="was-validated border shadow-md rounded-3 p-5"
+                  th:action="@{/edit-profile}" th:method="POST">
+                <h4>Change Email</h4>
 
                 <div class="mb-3">
-                    <label class="form-label" for="email">Email:</label>
+                    <label class="form-label" for="email">New Email:</label>
                     <input class="form-control w-100 px-2 py-1"
                            id="email"
                            name="email"
                            type="email"
-                           placeholder="Email"
+                           placeholder="New Email"
                            minlength="11"
                            pattern="^[a-z]+[a-z0-9_]+[@][a-z]{3,25}[.][a-z]{2,7}$"
                            required />
@@ -47,13 +38,50 @@
                     <div class="valid-feedback">Looks OK!</div>
                 </div>
 
+                <button type="submit" class="btn btn-primary">Save</button>
+
+            </form>
+
+        </section>
+
+        <!-- Edit Age -->
+        <section style="min-width: 340px; " class="g-col-4 m-3">
+
+            <form class="was-validated border shadow-md rounded-3 p-5"
+                  th:action="@{/edit-profile}" th:method="POST">
+                <h4>Edit Birth date</h4>
+
+                <div class="mb-3">
+                    <label class="form-label" for="age">Birth Date:</label>
+                    <input class="form-control w-100 px-2 py-1"
+                           id="age"
+                           name="age"
+                           type="date"
+                           required />
+                    <div class="invalid-feedback">Select Birth day!</div>
+                    <div class="valid-feedback">Looks OK!</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+
+            </form>
+
+        </section>
+
+        <!-- Edit Password -->
+        <section style="min-width: 340px; " class="g-col-4 m-3">
+
+            <form class="was-validated border shadow-md rounded-3 p-5"
+                  th:action="@{/edit-profile}" th:method="POST">
+                <h4>Change Password</h4>
+
                 <div class="mb-3">
                     <label class="form-label" for="password">Password:</label>
                     <input class="form-control w-100 px-2 py-1"
                            id="password"
                            name="password"
                            type="password"
-                           placeholder="Password"
+                           placeholder="New password"
                            minlength="8"
                            maxlength="45"
                            required />
@@ -67,23 +95,24 @@
                            id="rePassword"
                            name="rePassword"
                            type="password"
-                           placeholder="Re-password"
+                           placeholder="New password again"
                            required />
                     <div class="invalid-feedback">Re-password bust be between 8 and 45 characters long!</div>
                     <div class="valid-feedback">Looks OK!</div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary">Save</button>
 
             </form>
 
-        </div>
+        </section>
 
-    </div>
+    </section>
 
-    <footer class="container">
-        <th:block th:include="~{fragments/footer}"></th:block>
-    </footer>
+
 </main>
+<footer class="container">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
 </body>
 </html>
