@@ -1,4 +1,4 @@
-package pathfinder.pathfinder;
+package pathfinder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
