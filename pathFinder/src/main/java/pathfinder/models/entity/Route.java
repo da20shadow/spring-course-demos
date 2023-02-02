@@ -3,6 +3,8 @@ package pathfinder.models.entity;
 import jakarta.persistence.*;
 import pathfinder.models.enums.LEVEL;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "routes")
 public class Route extends BaseEntity{
@@ -16,6 +18,15 @@ public class Route extends BaseEntity{
     private User author;
     @Column
     private String url;
+    @OneToMany(targetEntity = Comment.class,
+            mappedBy = "route",
+            cascade = {CascadeType.MERGE,CascadeType.DETACH})
+    private Set<Comment> comments;
+    @OneToMany(targetEntity = Picture.class,
+            mappedBy = "route",
+            cascade = {CascadeType.MERGE,CascadeType.DETACH})
+    private Set<Picture> pictures;
+
 
     public Route() {
     }
