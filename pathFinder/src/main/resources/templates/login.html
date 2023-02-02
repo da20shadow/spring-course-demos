@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body>
+
+<header class="container">
+    <th:block th:include="~{fragments/navigation}"></th:block>
+</header>
+
+<main class="container">
+
+<div class="flex justify-content-center">
+
+    <div class="row gap-3 align-items-center">
+
+
+        <form class="was-validated border shadow-md rounded p-5 w-50 my-5 mx-auto" th:action="@{/login}" th:method="POST">
+
+            <span class="text-center text-danger-emphasis" th:text="${error}"></span>
+
+            <div class="mb-3">
+                <label class="form-label" for="username">Username:</label>
+                <input class="form-control w-100 px-2 py-1"
+                       id="username"
+                       name="username"
+                       type="text"
+                       placeholder="Username"
+                       required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="password">Password:</label>
+                <input class="form-control w-100 px-2 py-1"
+                       id="password"
+                       name="password"
+                       type="password"
+                       placeholder="Password"
+                       required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+
+        </form>
+    </div>
+
+</div>
+</main>
+<footer class="container">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+</body>
+</html>
