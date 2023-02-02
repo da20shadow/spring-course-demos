@@ -6,7 +6,7 @@ import pathfinder.models.enums.LEVEL;
 @Entity
 @Table(name = "routes")
 public class Route extends BaseEntity{
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT",name = "gpx_coordinates")
     private String gpx;
     @Enumerated(EnumType.STRING)
     private LEVEL level;
