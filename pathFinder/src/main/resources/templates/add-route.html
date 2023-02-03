@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body>
+
+<header class="container">
+    <th:block th:include="~{fragments/navigation}"></th:block>
+</header>
+
+<main class="container">
+
+    <div class="flex justify-content-center">
+
+        <div class="row gap-3 align-items-center">
+
+            <form class="was-validated border shadow-md rounded p-5 w-50 my-5 mx-auto"
+                  th:action="@{/register}" th:method="POST">
+
+                <h2>Add New Route</h2>
+
+                <!-- Route name -->
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name:</label>
+                    <input class="form-control w-100 px-2 py-1"
+                           id="name"
+                           name="name"
+                           type="text"
+                           placeholder="Route Name"
+                           minlength="5"
+                           maxlength="75"
+                           required />
+                    <div class="invalid-feedback">Route name must be between 5 and 75 characters long!</div>
+                    <div class="valid-feedback">Looks OK!</div>
+                </div>
+
+                <!-- Route description -->
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description:</label>
+                    <textarea class="form-control w-100 px-2 py-1"
+                              name="description"
+                              id="description"
+                              cols="30" rows="10"
+                              required></textarea>
+                    <div class="invalid-feedback">Please enter description!</div>
+                    <div class="valid-feedback">Looks OK!</div>
+                </div>
+
+                <!-- GPX Coordinates -->
+                <div class="mb-3">
+                    <label class="form-label" for="gpx">GPX Coordinates:</label>
+                    <input class="form-control w-100 px-2 py-1"
+                           id="gpx"
+                           name="gpx"
+                           type="file"
+                           required />
+                    <div class="invalid-feedback">Upload File!</div>
+                    <div class="valid-feedback">Looks OK!</div>
+                </div>
+
+                <!-- Level -->
+                <div class="mb-3">
+                    <label for="level">Level</label>
+                    <select class="form-select" name="level" id="level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+
+                <!-- Video URL -->
+                <div class="mb-3">
+                    <label class="form-label" for="videoUrl">Video URL:</label>
+                    <input class="form-control w-100 px-2 py-1"
+                           id="videoUrl"
+                           name="videoUrl"
+                           type="text"
+                           placeholder="https://youtube.com/video/12sd234"
+                           required />
+                    <div class="invalid-feedback">Add video URL!</div>
+                    <div class="valid-feedback">Looks OK!</div>
+                </div>
+
+                <!-- Categories -->
+                <div class="d-flex gap-3">
+
+                    <div class="form-check form-switch mb-3">
+                        <input type="checkbox" class="form-check-input" role="switch" id="pedestrian">
+                        <label class="form-check-label" for="pedestrian">Pedestrian</label>
+                    </div>
+
+                    <div class="inline form-check form-switch mb-3">
+                        <input type="checkbox" class="form-check-input" role="switch" id="bicycle">
+                        <label class="form-check-label" for="bicycle">Bicycle</label>
+                    </div>
+
+                    <div class="inline form-check form-switch mb-3">
+                        <input type="checkbox" class="form-check-input" role="switch" id="motorcycle">
+                        <label class="form-check-label" for="motorcycle">Motorcycle</label>
+                    </div>
+
+                    <div class="inline form-check form-switch mb-3">
+                        <input type="checkbox" class="form-check-input" role="switch" id="car">
+                        <label class="form-check-label" for="car">Car</label>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Route</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer class="container">
+        <th:block th:include="~{fragments/footer}"></th:block>
+    </footer>
+</main>
+</body>
+</html>
