@@ -1,9 +1,12 @@
 package pathfinder.controllers;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pathfinder.models.dto.user.EditProfileDTO;
 import pathfinder.models.dto.user.UserLoginDTO;
@@ -28,7 +31,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    private String postLoginPage(UserLoginDTO userLoginDTO, Model model) {
+    private String postLoginPage(HttpServletResponse response,
+                                 @ModelAttribute UserLoginDTO userLoginDTO, Model model) {
 
         var result = this.userService.login(userLoginDTO.getUsername(),userLoginDTO.getPassword());
 
@@ -36,6 +40,10 @@ public class UserController {
             model.addAttribute("error", "Bad credentials!");
             return "login";
         }
+
+        final Cookie cookie = new Cookie("username",result.getUsername());
+
+        response.addCookie(cookie);
 
         return "redirect:profile";
     }
@@ -46,7 +54,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    private String postRegisterPage(UserRegisterDTO userRegisterDTO,Model model) {
+    private String postRegisterPage(@ModelAttribute UserRegisterDTO userRegisterDTO,Model model) {
 
         var resultUsername = this.userService.getUserByUsername(userRegisterDTO.getUsername());
         var resultEmail = this.userService.getUserByEmail(userRegisterDTO.getEmail());
@@ -75,7 +83,7 @@ public class UserController {
     }
 
     @PostMapping("/edit-profile")
-    private String postEditProfilePage(EditProfileDTO editProfileDTO) {
+    private String postEditProfilePage(@ModelAttribute EditProfileDTO editProfileDTO) {
         //TODO: implement update profile
         System.out.println("New birth date: " + editProfileDTO.getAge());
         System.out.println("New email: " + editProfileDTO.getEmail());
