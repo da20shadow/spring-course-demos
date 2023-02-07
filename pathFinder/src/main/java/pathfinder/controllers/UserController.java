@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +43,7 @@ public class UserController {
         }
 
         final Cookie cookie = new Cookie("username",result.getUsername());
-
+        model.addAttribute("user", result);
         response.addCookie(cookie);
 
         return "redirect:profile";
@@ -71,14 +72,26 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    private String getProfilePage(Model model) {
-        User tempUser = this.userService.getUserByUsername("vipearn");
+    private String getProfilePage(Model model,
+                                  @CookieValue(name = "username",defaultValue = "")
+                                          String username) {
+        if (username.equals("")){
+            return "redirect:login";
+        }
+        User tempUser = this.userService.getUserByUsername(username);
         model.addAttribute("user", tempUser);
         return "profile";
     }
 
     @GetMapping("/edit-profile")
-    private String getEditProfilePage() {
+    private String getEditProfilePage(Model model,
+                                      @CookieValue(name = "username",defaultValue = "")
+                                              String username) {
+        if (username.equals("")){
+            return "redirect:login";
+        }
+        User tempUser = this.userService.getUserByUsername(username);
+        model.addAttribute("user", tempUser);
         return "edit-profile";
     }
 
