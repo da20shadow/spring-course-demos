@@ -6,18 +6,28 @@
         </a>
 
         <nav class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <a class="nav-link px-2 link-dark" href="/">Home</a>
-            <a class="nav-link px-2 link-dark" href="/about">About</a>
-            <a class="nav-link px-2 link-dark" href="/routes/add">Add new route</a>
-            <a class="nav-link px-2 link-dark" href="/profile">Profile</a>
-            <a class="nav-link px-2 link-dark" href="/admin">Admin</a>
-            <a class="nav-link px-2 link-dark" href="/logout">Logout</a>
+
+            <th:block th:if="${@loggedUser.id}">
+                <a class="nav-link px-2 link-dark" href="/routes/add">Add new route</a>
+                <a class="nav-link px-2 link-dark" href="/profile">Profile</a>
+                <a class="nav-link px-2 link-dark" href="/admin">Admin</a>
+                <a class="nav-link px-2 link-dark" href="/logout">Logout</a>
+            </th:block>
+
+            <th:block th:unless="${@loggedUser.id}">
+                <a class="nav-link px-2 link-dark" href="/">Home</a>
+                <a class="nav-link px-2 link-dark" href="/about">About</a>
+            </th:block>
+
         </nav>
 
-        <div class="col-md-3 text-end">
-            <a href="/login" type="button" class="btn btn-primary me-2">Login</a>
-            <a href="/register" type="button" class="btn btn-warning">Sign-up</a>
+        <div class="col-md-3 text-end" >
+            <th:block th:if="${@loggedUser.id == null}">
+                <a href="/login" type="button" class="btn btn-primary me-2">Login</a>
+                <a href="/register" type="button" class="btn btn-warning">Sign-up</a>
+            </th:block>
         </div>
+
     </div>
 
 </th:block>
