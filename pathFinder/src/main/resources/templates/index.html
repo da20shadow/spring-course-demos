@@ -64,14 +64,16 @@
     </section>
 
     <!-- Info Section -->
-    <section class="road mb-5" >
-        <img src="/images/most-commented.jpg" alt="">
+    <section th:if="${mostCommented}" class="road mb-5" >
+        <img th:src="${mostCommented.imageUrl}" alt="Route picture">
         <div>
-            <h2>The most commented route</h2>
-            <p>Read more about the most commented route and do not miss the
-                chance to visit it and give your opinion to help other users.</p>
+            <h2 th:text="${mostCommented.name}"></h2>
+            <p th:text="${mostCommented.description}"></p>
             <a href="/" class="btn">Learn More</a>
         </div>
+    </section>
+    <section class="road mb-5" th:unless="${mostCommented}">
+        <h2>No Routes Yet!</h2>
     </section>
 
     <!-- Portfolio -->
