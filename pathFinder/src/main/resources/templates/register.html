@@ -17,7 +17,7 @@
         <div class="row gap-3 align-items-center">
 
             <form class="was-validated border shadow-md rounded p-5 w-50 my-5 mx-auto"
-                  th:action="@{/register}" th:method="POST">
+                  th:action="@{/register}" th:method="POST" th:object="${userRegForm}">
 
                 <div class="mb-3">
                     <label class="form-label" for="username">Username:</label>
@@ -25,12 +25,13 @@
                            id="username"
                            name="username"
                            type="text"
+                           th:value="*{username}"
                            placeholder="Username"
                            minlength="5"
                            maxlength="45"
                            required />
-                    <div class="invalid-feedback">Username must be between 5 and 45 characters long!</div>
-                    <div class="valid-feedback">Looks OK!</div>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('username')}">Username must be between 5 and 45 characters long!</div>
+                    <div class="valid-feedback" th:unless="${#fields.hasErrors('username')}">Looks OK!</div>
                 </div>
 
                 <div class="mb-3">
@@ -39,12 +40,13 @@
                            id="email"
                            name="email"
                            type="email"
+                           th:value="*{email}"
                            placeholder="Email"
                            minlength="11"
                            pattern="^[a-z]+[a-z0-9_]+[@][a-z]{3,25}[.][a-z]{2,7}$"
                            required />
-                    <div class="invalid-feedback">Please enter valid email!</div>
-                    <div class="valid-feedback">Looks OK!</div>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}">Please enter valid email!</div>
+                    <div class="valid-feedback" th:unless="${#fields.hasErrors('username')}">Looks OK!</div>
                 </div>
 
                 <div class="mb-3">
@@ -53,12 +55,13 @@
                            id="password"
                            name="password"
                            type="password"
+                           th:value="*{password}"
                            placeholder="Password"
                            minlength="8"
                            maxlength="45"
                            required />
-                    <div class="invalid-feedback">Password must be between 8 and 45 characters long!</div>
-                    <div class="valid-feedback">Looks OK!</div>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}">Password must be between 8 and 45 characters long!</div>
+                    <div class="valid-feedback" th:unless="${#fields.hasErrors('password')}">Looks OK!</div>
                 </div>
 
                 <div class="mb-3">
@@ -67,10 +70,11 @@
                            id="rePassword"
                            name="rePassword"
                            type="password"
+                           th:value="*{rePassword}"
                            placeholder="Re-password"
                            required />
-                    <div class="invalid-feedback">Re-password bust be between 8 and 45 characters long!</div>
-                    <div class="valid-feedback">Looks OK!</div>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('rePassword')}">Re-password bust be between 8 and 45 characters long!</div>
+                    <div class="valid-feedback" th:unless="${#fields.hasErrors('rePassword')}">Looks OK!</div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Register</button>
