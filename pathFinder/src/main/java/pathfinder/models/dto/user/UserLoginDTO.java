@@ -2,7 +2,9 @@ package pathfinder.models.dto.user;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import pathfinder.validations.userValidators.ValidateLoginUser;
 
+@ValidateLoginUser
 public class UserLoginDTO {
     @NotEmpty
     @Size(min = 5,max = 45)
