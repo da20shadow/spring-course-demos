@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import pathfinder.validations.valueMatchers.PasswordMatch;
 
-@PasswordMatch(password = "password",confirmPassword = "rePassword")
+@PasswordMatch(password = "password",confirmPassword = "confirmPassword")
 public class UserRegisterDTO {
     @NotEmpty
     @Size(min = 5, max = 45)
@@ -19,7 +19,7 @@ public class UserRegisterDTO {
     private String password;
     @NotEmpty
     @Size(min = 8, max = 45)
-    private String rePassword;
+    private String confirmPassword;
 
     public UserRegisterDTO() {
     }
@@ -48,11 +48,11 @@ public class UserRegisterDTO {
         this.password = password;
     }
 
-    public String getRePassword() {
-        return rePassword;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setRePassword(String rePassword) {
-        this.rePassword = rePassword;
+    public void setConfirmPassword(String rePassword) {
+        this.confirmPassword = rePassword;
     }
 }
