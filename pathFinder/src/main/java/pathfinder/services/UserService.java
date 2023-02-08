@@ -28,11 +28,11 @@ public class UserService {
         this.userRepository.save(user);
     }
 
-    public User getUserByUsername(String username){
+    public User getUserByUsername(String username) {
 
         Optional<User> result = this.userRepository.findOneByUsername(username);
 
-        if (result.isEmpty()){
+        if (result.isEmpty()) {
             return null;
         }
         return result.get();
@@ -41,15 +41,15 @@ public class UserService {
     public User getUserByEmail(String email) {
         Optional<User> result = this.userRepository.findOneByEmail(email);
 
-        if (result.isEmpty()){
+        if (result.isEmpty()) {
             return null;
         }
         return result.get();
     }
 
     public User login(String username, String password) {
-        Optional<User> result = this.userRepository.findOneByUsernameAndPassword(username,password);
-        if (result.isEmpty()){
+        Optional<User> result = this.userRepository.findOneByUsernameAndPassword(username, password);
+        if (result.isEmpty()) {
             return null;
         }
         return result.get();

@@ -3,7 +3,9 @@ package pathfinder.models.dto.user;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import pathfinder.validations.valueMatchers.PasswordMatch;
 
+@PasswordMatch(password = "password",confirmPassword = "rePassword")
 public class UserRegisterDTO {
     @NotEmpty
     @Size(min = 5, max = 45)
