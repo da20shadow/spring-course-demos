@@ -68,13 +68,13 @@
                     <label class="form-label" for="rePassword">Re-password:</label>
                     <input class="form-control w-100 px-2 py-1"
                            id="rePassword"
-                           name="rePassword"
+                           name="confirmPassword"
                            type="password"
-                           th:value="*{rePassword}"
+                           th:value="*{confirmPassword}"
                            placeholder="Re-password"
                            required />
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('rePassword')}">Re-password bust be between 8 and 45 characters long!</div>
-                    <div class="valid-feedback" th:unless="${#fields.hasErrors('rePassword')}">Looks OK!</div>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('confirmPassword')}">Re-password bust be between 8 and 45 characters long!</div>
+                    <div class="valid-feedback" th:unless="${#fields.hasErrors('confirmPassword')}">Looks OK!</div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Register</button>
