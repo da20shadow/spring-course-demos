@@ -1,6 +1,6 @@
 package battleship.services;
 
-import battleship.models.helpers.CategoryModel;
+import battleship.models.CategoryModel;
 import battleship.models.entities.Category;
 import battleship.models.enums.ShipCategory;
 import battleship.repositories.CategoryRepository;
