@@ -1,4 +1,4 @@
-package battleship.models.helpers;
+package battleship.models;
 
 import battleship.models.enums.ShipCategory;
 import lombok.*;
