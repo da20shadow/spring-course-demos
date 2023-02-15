@@ -12,7 +12,7 @@ import lombok.Setter;
 public class LoggedUser {
     private Long id;
 
-    public boolean isUserLogged(){
+    public boolean isLogged(){
         return this.id != null;
     }
 
